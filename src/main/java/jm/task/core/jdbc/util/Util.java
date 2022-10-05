@@ -11,17 +11,12 @@ public class Util {
     private static Connection connection;
     private static volatile Util instance;
 
-    public Util() {
-        try {
-            connection = DriverManager.getConnection(HOST, USERNAME, PASSWORD);
-            System.out.println("ok, connect");
+    public static Connection getConnection() {
+        try{
+            return connection = DriverManager.getConnection(HOST, USERNAME, PASSWORD);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static Connection getConnection() {
-        return connection;
     }
 
     public static Util getInstance() {
